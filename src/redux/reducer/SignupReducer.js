@@ -1,19 +1,16 @@
-
-export default function reducer(state = {
-  auth: '',
-}, action) {
+export default function reducer(state = {}, action) {
   switch (action.type) {
-    case 'SIGNUP_INITATED': {
-      return { ...state, changingStatus: 'uninitiated' }
+    case "SIGNUP_INITATED": {
+      return { ...state, status: "uninitiated" };
     }
-    case 'SIGNUP_STARTED': {
-      return { ...state, changingStatus: 'ongoing' }
+    case "SIGNUP_STARTED": {
+      return { ...state, status: "ongoing" };
     }
-    case 'SIGNUP_SUCCESS': {
-      return { ...state, changingStatus: 'success', auth: action.payload }
+    case "SIGNUP_SUCCESS": {
+      return { ...state, ...action.payload, status: "success" };
     }
-    case 'SIGNUP_FAILED': {
-      return { ...state, changingStatus: 'failed', error: action.payload }
+    case "SIGNUP_FAILED": {
+      return { ...state, ...action.payload, status: "failed" };
     }
     default: {
       return state;
