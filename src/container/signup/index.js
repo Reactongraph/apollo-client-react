@@ -8,8 +8,8 @@ const helper = new CommonHelper();
 class Signup extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   handleUserSignup = data => {
-    const { name, userName, password, email, phoneNo } = this.state;
-    if (name && userName && password && email && phoneNo) {
+    if (data.register && data.register.token) {
+      helper.store(data.register.token);
       this.props.dispatch({
         type: "SIGNUP_SUCCESS",
         payload: data

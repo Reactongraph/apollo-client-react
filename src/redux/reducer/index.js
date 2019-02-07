@@ -1,9 +1,16 @@
-import { combineReducers } from 'redux'
-import login from './LoginReducer'
-import signup from './SignupReducer'
+import { combineReducers } from "redux";
+import login from "./LoginReducer";
+import signup from "./SignupReducer";
 
 // Wrap all reducers in a container
-export default combineReducers({
+const rootReducer = combineReducers({
   signup,
-  login,
+  login
 });
+
+export default (state, action) => {
+  if (action.type === "LOGOUT") {
+    return {};
+  }
+  return rootReducer(state, action);
+};

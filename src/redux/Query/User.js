@@ -11,21 +11,31 @@ class User {
     }
   `;
   user = () => `
-  query User($username: String!, $password: String!){
-    user(username:$username, password:$password ) {
-      name
-      username
-      phone_no
-      email
-      password
+    query User($token: String!){
+      user(token:$token) {
+        name
+        username
+        phone_no
+        email
+      }
     }
-  }
-`;
+  `;
+  login = () => `
+    query Login($username: String!, $password: String!){
+      login(username:$username, password:$password ) {
+        name
+        username
+        phone_no
+        email
+        token
+      }
+    }
+    `;
 
   // Mutation
   createUser = () => `mutation CreateUser($name:String!, $username:String!, $password:String!, $phone_no: String!, $email: String!){
-    createUser(name:$name, username:$username, password:$password, phone_no:$phone_no, email:$email){
-      id, name, username, phone_no, email, password
+    register(name:$name, username:$username, password:$password, phone_no:$phone_no, email:$email){
+      name, username, phone_no, email, token
     }
   }`;
 }

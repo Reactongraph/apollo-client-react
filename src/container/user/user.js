@@ -5,20 +5,15 @@ import { gql } from "apollo-boost";
 
 const user = new User();
 
-const UserContent = props => {
-  const { data } = props.login;
-  let loginStatus = props.login.status;
-  const { createUser } = props.signup;
-  let signupStatus = props.signup.status;
-  if (loginStatus === "success" || signupStatus === "success") {
-    const { username, password } =
-      data && data.user[0] ? data.user[0] : createUser;
+const UserContent = ({ logout }) => {
+  const token = localStorage.getItem("token");
+  if (token) {
     return (
       <Query
         query={gql`
           ${user.user()}
         `}
-        variables={{ username, password }}
+        variables={{ token }}
       >
         {({ loading, error, data }) => {
           let user = data && data.user && data.user[0];
@@ -40,6 +35,7 @@ const UserContent = props => {
                     <div className="field">
                       Phone No: <div>{user.phone_no}</div>
                     </div>
+                    <button onClick={logout}>Logout</button>
                   </div>
                 </div>
               </div>
