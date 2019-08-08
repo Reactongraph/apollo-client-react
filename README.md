@@ -1,5 +1,9 @@
 # apollo-client-react
 
+apollo-client-react is a complete implementation of GraphQL with react.It includes two runtime libraries, Apollo Server and Apollo Client, for building and querying your graph's API.
+
+apollo-client-react is the integration of GraphQL with react and GraphQL is the specification that we are using to communicate between our graph API and client
+
 ## Requirements
 
 To run this project, you will only need Node.js on your environement.
